@@ -11,6 +11,9 @@
   justify-content: center;
   z-index: 1000;
   animation: fadeIn 0.15s ease;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 @keyframes fadeIn {
@@ -28,6 +31,7 @@
   flex-direction: column;
   overflow: hidden;
   animation: slideUp 0.2s ease;
+  cursor: default;
 }
 
 @keyframes slideUp {
@@ -50,6 +54,7 @@
 }
 
 .settings-header h1 {
+  color: var(--text-primary);
   font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -98,18 +103,26 @@
 }
 
 .setting-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  justify-content: space-between;
+  gap: 20px;
   padding: 12px 0;
   min-height: 48px;
 }
 
 .setting-row label {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 2px;
+  justify-self: start;
+}
+
+.setting-row > .label-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-self: start;
 }
 
 .label-text {
@@ -133,7 +146,9 @@
   font-family: var(--font-ui);
   cursor: pointer;
   outline: none;
-  transition: all 0.1s;
+  transition: border-color 0.1s;
+  min-width: 140px;
+  justify-self: end;
 }
 
 .setting-row select:hover {
@@ -154,6 +169,8 @@
   cursor: pointer;
   transition: all 0.2s;
   padding: 0;
+  flex-shrink: 0;
+  justify-self: end;
 }
 
 .toggle:hover {
@@ -175,6 +192,7 @@
   left: 2px;
   transition: left 0.2s;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
 }
 
 .toggle.active .toggle-thumb {

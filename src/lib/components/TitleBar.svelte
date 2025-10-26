@@ -53,23 +53,29 @@
                 class="tab"
                 class:active={tab.id === activeTabId}
                 on:click={() => dispatch('switch', tab.id)}
+                aria-label="Switch to {tab.title}"
         >
           <span class="tab-title">{getTabTitle(tab)}</span>
           <button
                   class="tab-close"
                   on:click|stopPropagation={() => dispatch('close', tab.id)}
+                  aria-label="Close {tab.title}"
           >
             ×
           </button>
         </button>
       {/each}
 
-      <button class="new-tab-btn" on:click={() => dispatch('new')}>
+      <button class="new-tab-btn" on:click={() => dispatch('new')} aria-label="New tab">
         +
       </button>
     </div>
 
-    <div class="titlebar-spacer" on:mousedown={startDrag}></div>
+    <button
+            class="titlebar-spacer"
+            on:mousedown={startDrag}
+            aria-label="Drag window"
+    ></button>
   </div>
 
   <div class="window-controls">
